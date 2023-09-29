@@ -1,6 +1,7 @@
 import { PrismaClient, Users } from "@prisma/client";
+import { UserRepositorie } from "../Entities/user-repositorie";
 
-class UserRepositorie {
+class UserRepo implements UserRepositorie {
     readonly prisma = new PrismaClient();
 
     public async findMany() {
@@ -27,7 +28,9 @@ class UserRepositorie {
 
             return user
         } else {
-            return Error;
+            return JSON.stringify({
+                message: "é nescessario passar um id ou nome"
+            });
         }
     }
 
@@ -41,7 +44,9 @@ class UserRepositorie {
 
             return user
         } else {
-            return Error;
+            return JSON.stringify({
+                message: "é nescessario passar um id ou nome"
+            });
         }
     }
 
@@ -60,7 +65,7 @@ class UserRepositorie {
 
     }
 
-    public async Insert(id: string, FullName: string) {
+    public async insertUser(id: string, FullName: string) {
         const user = await this.prisma.users.create({
             data: {
                 id: id,
@@ -72,4 +77,4 @@ class UserRepositorie {
     }
 }
 
-export default UserRepositorie
+export default UserRepo
