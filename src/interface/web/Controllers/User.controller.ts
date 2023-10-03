@@ -1,6 +1,6 @@
-import { userDto } from "../../../domain/Entities/UserDto";
+import { userDto } from "../../../domain/Entities/DTO/UserDto";
 import { Request, Response } from "../../../domain/Entities/http-functions";
-import { idGenerator } from "../../../infra/User-UseCases/id-generator";
+import { idGenerator } from "../../../infra/generators/id-generator";
 import registerUser from "../../../infra/User-UseCases/register";
 
 class UserController {

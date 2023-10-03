@@ -1,4 +1,4 @@
-import { userDto } from "./UserDto"
+import { userDto } from "./DTO/UserDto"
 import { Request as ExpressRequest, Response as ExpressResponse } from "express"; // Renomeando para evitar conflitos de nome
 
 interface Request extends ExpressRequest {

@@ -1,4 +1,4 @@
-import { userDto } from "../../domain/Entities/UserDto";
+import { userDto } from "../../domain/Entities/DTO/UserDto";
 import UserRepo from "../../domain/Repositories/Prisma.users.repositorie";
 
 const registerUser = async (data: userDto) => {
