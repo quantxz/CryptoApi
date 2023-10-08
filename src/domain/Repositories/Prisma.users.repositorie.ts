@@ -1,5 +1,5 @@
 import { PrismaClient, Users } from "@prisma/client";
-import { UserRepositorie } from "../Entities/user-repositorie";
+import { UserRepositorie } from "../Entities/User/Repositorie";
 
 class UserRepo implements UserRepositorie {
     readonly prisma = new PrismaClient();

@@ -1,7 +1,7 @@
-import { userDto } from "../../../domain/Entities/DTO/UserDto";
-import { Request, Response } from "../../../domain/Entities/http-functions";
-import { idGenerator } from "../../../infra/generators/id-generator";
-import registerUser from "../../../infra/User-UseCases/register";
+import { userDto } from "../../../domain/Entities/User/UserDto";
+import { Request, Response } from "../../../domain/Entities/http/http-functions"
+import { idGenerator } from "../../generators/id-generator";
+import registerUser from "../../../domain/Entities/User/register";
 
 class UserController {
     public async insertUser(req: Request, res: Response) {
