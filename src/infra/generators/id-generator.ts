@@ -1,3 +1,5 @@
+//tranformar este no gerador da chave privada do usuario
+//e criar um novo id de usuario para ser a Apikey  
 export const idGenerator = () => {
     const regex = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     let id = ""

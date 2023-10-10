@@ -10,10 +10,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//criar um outro campo como por exemplo ip
+//para que só a api key que vai ser passada na url
+//não seja suficiente para o usuario entrar(impedir roubo de dados)
+
 model Users {
-  id        String @unique @id
-  fullName  String
-  Email     String
+  id          String @unique @id
+  fullName    String
+  Email       String @unique
+  password    String
+  privateKey  String
   
   @@map("Users")
 }

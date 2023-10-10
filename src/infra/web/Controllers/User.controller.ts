@@ -14,7 +14,7 @@ class UserController {
         }
 
         const user = await registerUser(userDto)
-
+        //colocar o EmailRepo para funcionar(enviar email)
         return res.status(200).send({
             UsersData: user,
             message: "Atenção não perca e nem repasse este id para ninguem" 

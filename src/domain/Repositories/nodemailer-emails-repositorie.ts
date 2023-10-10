@@ -1,34 +1,20 @@
-import { emailRepositorie } from "../Entities/email.repositorie";
-import nodemailer from "nodemailer"
+import { emailRepositorie } from "../Entities/nodemailer/email.repositorie";
 
-//criar conta no umbler ou em outro host para testar
-class EmailRepo implements emailRepositorie {
-    private user: string = "canalsemfoco223@gmail.com"
-    private pass: string = "senaosabe33"
 
-    createTransport(host: string, port: number | string, auth: {}) {
-        let user = this.user
-        let pass = this.pass
-
-        try {
-            nodemailer.createTransport({
-                host, 
-                port,
-                auth: {user, pass}
-            })
-        }catch(Error) {
-            throw new Error.message(Error)
-        }
+//conta criada no zohomail.com
+export class EmailRepo implements emailRepositorie {
+    private readonly email: any
+    //sempre que o email EmailRepo for instanciado é nescessario instanciar o emailService dele com o nodemailerInstance da entidade nodemailer-instance 
+    constructor(emailService: any) {
+        this.email = emailService
     }
 
-    sendEmail(userEmail: string) {
-        let user = this.user;
-        let pass = this.pass;
+    async sendEmail(userEmail: string): Promise<any>{
         
         try {
-            nodemailer.sendEmail({
+            await this.email.sendMail({
                 //de
-                from: user,
+                from: "Anderson Silva <anderson.backdev@zohomail.com>",
                 //para
                 to: userEmail,
                 //assunto do email
@@ -36,12 +22,10 @@ class EmailRepo implements emailRepositorie {
                 //texo do email (tambem da pra mandar um html no email, pique um readme.md, usando no lugar de text um html)
                 text: "ola mundo"
             })
-        } catch(Error) {
-            throw new Error.message(Error)
+            console.log("email enviado com sucesso")
+
+        } catch(error) {
+            console.debug(error)
         }
     }
 }
-
-const emailRepos = new EmailRepo
-
-//emailRepos.createTransport("")
