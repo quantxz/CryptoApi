@@ -14,7 +14,7 @@ export class EmailRepo implements emailRepositorie {
         try {
             await this.email.sendMail({
                 //de
-                from: "Anderson Silva <anderson.backdev@zohomail.com>",
+                from: `Anderson Silva <${process.env.USER}>`,
                 //para
                 to: userEmail,
                 //assunto do email
