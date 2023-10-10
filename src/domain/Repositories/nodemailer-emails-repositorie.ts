@@ -1,4 +1,4 @@
-import { emailRepositorie } from "../Entities/nodemailer/email.repositorie";
+import { emailRepositorie } from "../Entities/nodemailer/email-repositorie";
 
 
 //conta criada no zohomail.com

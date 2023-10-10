@@ -15,11 +15,11 @@ datasource db {
 //não seja suficiente para o usuario entrar(impedir roubo de dados)
 
 model Users {
-  id          String @unique @id
-  fullName    String
-  Email       String @unique
-  password    String
-  privateKey  String
+  id              String   @unique @id
+  fullUserName    String
+  email           String   @unique
+  password        String
+  privateKey      String?  @unique 
   
   @@map("Users")
 }

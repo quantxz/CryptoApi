@@ -22,7 +22,7 @@ class UserRepo implements UserRepositorie {
         } else if (FullName) {
             const user = await this.prisma.users.findFirst({
                 where: {
-                    fullName: FullName
+                    fullUserName: FullName
                 }
             });
 
@@ -54,7 +54,7 @@ class UserRepo implements UserRepositorie {
 
         const user = await this.prisma.users.update({
             data: {
-                fullName: FullName
+                fullUserName: FullName
             },
             where: {
                 id: id
@@ -65,11 +65,14 @@ class UserRepo implements UserRepositorie {
 
     }
 
-    public async insertUser(id: string, FullName: string) {
+    
+    public async insertUser(id: string, fullName: string, email: string, password: string) {
         const user = await this.prisma.users.create({
             data: {
                 id: id,
-                fullName: FullName
+                fullUserName: fullName,
+                email: email,
+                password: password
             }
         })
 
