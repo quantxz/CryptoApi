@@ -1,5 +1,5 @@
 import { userDto } from "../../../domain/Entities/User/UserDto";
-import { Request, Response } from "../../../domain/Entities/http/http-functions"
+import { Request, Response } from "../../../domain/UseCases/http-UseCases"
 import { idGenerator } from "../../generators/id-generator";
 import registerUser from "../../../domain/Entities/User/register";
 
