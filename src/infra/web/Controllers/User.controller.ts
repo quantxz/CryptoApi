@@ -21,9 +21,8 @@ class UserController {
 
         let firstName = fullName.split(" ")
         const user = await registerUser(userDto)
-
-        //o emailSend não esta funcionando
-        //await emailSenderService.sendEmail(email)
+        
+        await emailSenderService.sendEmail(email)
         
         return res.status(200).send({
             UsersData: user,

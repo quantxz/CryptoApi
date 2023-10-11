@@ -1,7 +1,8 @@
 import express from 'express';
 import cors from 'cors'
 import routes from '../../infra/web/Routes';
-// import routes from './interface/Routes';
+import dotenv from 'dotenv';
+dotenv.config();  
 
 class App {
     public server: express.Application;

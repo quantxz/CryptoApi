@@ -1,10 +1,10 @@
 -- CreateTable
 CREATE TABLE "Users" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "fullName" TEXT NOT NULL,
+    "fullUserName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "privateKey" TEXT NOT NULL
+    "privateKey" TEXT
 );
 
 -- CreateIndex

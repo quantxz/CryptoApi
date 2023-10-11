@@ -1,5 +1,7 @@
 import { emailRepositorie } from "../Entities/nodemailer/email-repositorie";
-
+import { nodemailerInstance } from "../Entities/nodemailer/nodemailer-instance";
+import dotenv from 'dotenv';
+dotenv.config();  
 
 //conta criada no zohomail.com
 export class EmailRepo implements emailRepositorie {

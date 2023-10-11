@@ -1,5 +1,6 @@
 import nodemailer from "nodemailer"
-
+import dotenv from 'dotenv';
+dotenv.config();  
 
 export const nodemailerInstance = nodemailer.createTransport({
     host: "smtp.zoho.com",
