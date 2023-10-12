@@ -1,9 +1,9 @@
-import { Request as ExpressRequest, Response as ExpressResponse } from "express"; // Renomeando para evitar conflitos de nome
+import { Request as ExpressRequest, Response as ExpressResponse, NextFunction } from "express"; // Renomeando para evitar conflitos de nome
 
-interface Request extends ExpressRequest {
-}
+interface Request extends ExpressRequest {}
 
-interface Response extends ExpressResponse {
-}
+interface Response extends ExpressResponse {}
 
-export { Request, Response }
+interface nextFunction extends NextFunction {}
+
+export { Request, Response, nextFunction }

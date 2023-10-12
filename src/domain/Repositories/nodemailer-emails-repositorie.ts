@@ -11,7 +11,7 @@ export class EmailRepo implements emailRepositorie {
         this.email = emailService
     }
 
-    async sendEmail(userEmail: string): Promise<any>{
+    async sendEmail(userEmail: string, {...keys}, htmlBody: any): Promise<any>{
         
         try {
             await this.email.sendMail({
@@ -20,9 +20,9 @@ export class EmailRepo implements emailRepositorie {
                 //para
                 to: userEmail,
                 //assunto do email
-                subject: "teste de emailRepo",
+                subject: "Chaves de Acesso A crypt API",
                 //texo do email (tambem da pra mandar um html no email, pique um readme.md, usando no lugar de text um html)
-                text: "ola mundo"
+                html: htmlBody
             })
             console.log("email enviado com sucesso")
 

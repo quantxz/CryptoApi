@@ -66,13 +66,14 @@ class UserRepo implements UserRepositorie {
     }
 
     
-    public async insertUser(id: string, fullName: string, email: string, password: string) {
+    public async insertUser(id: string, fullName: string, email: string, password: string, privateKey: string) {
         const user = await this.prisma.users.create({
             data: {
                 id: id,
                 fullUserName: fullName,
                 email: email,
-                password: password
+                password: password,
+                privateKey: privateKey
             }
         })
 

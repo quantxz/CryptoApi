@@ -19,7 +19,7 @@ model Users {
   fullUserName    String
   email           String   @unique
   password        String
-  privateKey      String?  @unique 
+  privateKey      String  @unique 
   
   @@map("Users")
 }
