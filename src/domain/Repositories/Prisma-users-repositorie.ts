@@ -34,7 +34,7 @@ class UserRepo implements UserRepositorie {
         }
     }
 
-    public async findOne(id: string) {
+    public async findOne(id?: string, privateKey?: string, email?: string) {
         if(id) {
             const user = await this.prisma.users.findUnique({
                 where: {
@@ -43,7 +43,17 @@ class UserRepo implements UserRepositorie {
             });
 
             return user
+        } else if (id && email) {
+            const user = await this.prisma.users.findUnique({
+                where: {
+                    privateKey: privateKey,
+                    email: email
+                }
+            });
+
+            return user;
         } else {
+
             return JSON.stringify({
                 message: "é nescessario passar um id ou nome"
             });

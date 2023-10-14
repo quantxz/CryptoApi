@@ -1,7 +1,7 @@
 import { userDto } from "../../../domain/Entities/User/UserDto";
 import { Request, Response } from "../../../domain/UseCases/http-UseCases"
 import { idGenerator } from "../../generators/id-generator";
-import registerUser from "../../../domain/UseCases/registerUser-UseCase"
+import registerUser from "../../../domain/UseCases/user-Usecases/registerUser-UseCase"
 import { EmailRepo } from "../../../domain/Repositories/nodemailer-emails-repositorie";
 import { nodemailerInstance } from "../../../domain/Entities/nodemailer/nodemailer-instance";
 import { privateKeyGenerator } from "../../generators/privateKey-generator";

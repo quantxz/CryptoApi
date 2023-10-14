@@ -10,16 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//criar um outro campo como por exemplo ip
-//para que só a api key que vai ser passada na url
-//não seja suficiente para o usuario entrar(impedir roubo de dados)
-
+//id é a chave publica
 model Users {
-  id              String   @unique @id
+  id              String    @unique @id
   fullUserName    String
-  email           String   @unique
+  email           String    @unique
   password        String
-  privateKey      String  @unique 
-  
+  privateKey      String    @unique 
+  crypts crypts[]
+
   @@map("Users")
+}
+
+model crypts {
+  id      Int  @default(autoincrement()) @id
+  user    Users     @relation(fields: [userId], references: [id])
+  crypt   String
+  userId  String
+
+  @@map("crypt")
 }

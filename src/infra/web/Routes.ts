@@ -6,6 +6,7 @@ const user = new UsersController
 const flux = new authFluxController
 
 routes.post("/insert", user.insertUser)
-routes.get("/apiKey", flux.login)
+routes.post("/apiKey", flux.privateLogin)
+routes.get("/apiKey", flux.publicLogin)
 
 export default routes;
