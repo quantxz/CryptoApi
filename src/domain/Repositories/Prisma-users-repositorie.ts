@@ -8,13 +8,13 @@ class UserRepo implements UserRepositorie {
         const users = await this.prisma.users.findMany();
         
         return users;
-    }
+    };
 
     public async findFirst(id?: string , FullName?: string) {
         if(id) {
             const user = await this.prisma.users.findFirst({
                 where: {
-                    id: id
+                    id
                 }
             });
 
@@ -32,13 +32,13 @@ class UserRepo implements UserRepositorie {
                 message: "é nescessario passar um id ou nome"
             });
         }
-    }
+    };
 
     public async findOne(id?: string, privateKey?: string, email?: string) {
         if(id) {
             const user = await this.prisma.users.findUnique({
                 where: {
-                    id: id
+                    id
                 }
             });
 
@@ -46,8 +46,8 @@ class UserRepo implements UserRepositorie {
         } else if (id && email) {
             const user = await this.prisma.users.findUnique({
                 where: {
-                    privateKey: privateKey,
-                    email: email
+                    privateKey,
+                    email
                 }
             });
 
@@ -58,7 +58,7 @@ class UserRepo implements UserRepositorie {
                 message: "é nescessario passar um id ou nome"
             });
         }
-    }
+    };
 
     public async updateName(id: string, FullName: string) {
 
@@ -67,13 +67,13 @@ class UserRepo implements UserRepositorie {
                 fullUserName: FullName
             },
             where: {
-                id: id
+                id
             }
         });
 
         return user
 
-    }
+    };
 
     
     public async insertUser(id: string, fullName: string, email: string, password: string, privateKey: string) {
@@ -88,7 +88,7 @@ class UserRepo implements UserRepositorie {
         })
 
         return user;
-    }
+    };
 }
 
-export default UserRepo
+export default UserRepo;

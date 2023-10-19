@@ -23,7 +23,8 @@ model Users {
 }
 
 model crypts {
-  id        Int  @default(autoincrement()) @id
+  id        Int       @default(autoincrement()) @id
+  cryptId   String    @unique
   user      Users     @relation(fields: [userId], references: [id])
   crypt     String
   cryptKey  String
