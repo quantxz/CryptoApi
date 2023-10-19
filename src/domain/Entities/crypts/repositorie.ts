@@ -1,3 +1,3 @@
 export interface CryptRepositorie {
-    insertCrypt()
+    insertCrypt(crypt: string, cryptKey: string, userId: string)
 }
