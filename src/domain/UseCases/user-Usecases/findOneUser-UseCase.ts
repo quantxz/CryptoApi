@@ -7,7 +7,7 @@ const findOneUser = async (data: userDto) => {
         const user = await userRepo.findOne(data?.id, data?.email, data?.privateKey)
     
         return user
-    } catch(Error) {throw new Error}
+    } catch(error) { console.debug(error) }
 }
 
 export default findOneUser

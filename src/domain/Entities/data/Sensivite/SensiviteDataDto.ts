@@ -1,5 +1,5 @@
 interface SensiviteDataDtoBR {
-    fullName?: string;
+    fullName: string;
     cpf?: string;
     adress?: {
       street?: string;
