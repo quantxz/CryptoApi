@@ -14,12 +14,25 @@ class authFluxController {
             return user
             
         } catch(error) { new Error }
-    }
+    };
+    
+    public async privateLoginUrlKeyAutentication(req: Request, res: Response, next: nextFunction): Promise<any> {
+            try {
+                const apiPrivateKey: Exclude<any, null | undefined> = req.query.ApiPrivateKeyLogin
+
+                const user = await findOneUser(privateKey)
+                next()
+    
+                return user
+    
+            } catch(error) { new Error }
+        }
+    
 
     public async privateLogin(req: Request, res: Response, next: nextFunction): Promise<any> {
         try {
             const apiPrivateKey: Exclude<any, null | undefined> = req.query.ApiPrivateKeyLogin
-            const { userName } = req.body;
+            const { Password } = req.body;
             const data = {
                 privateKey: apiPrivateKey,
                 fullName: userName
