@@ -54,7 +54,7 @@ class UserRepo implements UserRepositorie {
         } else if (id && email) {
             const user = await this.prisma.users.findUnique({
                 where: {
-                    privateKey,
+                    id,
                     email
                 }
             });
