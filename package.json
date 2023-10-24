@@ -6,7 +6,7 @@
   "author": "quantxz <indiedev.core@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node ./src/interface/server.ts"
+    "dev": "ts-node-dev ./src/interface/server.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.4.2",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.14",
-    "prisma": "^5.4.2"
+    "prisma": "^5.4.2",
+    "ts-node-dev": "^2.0.0"
   }
 }
