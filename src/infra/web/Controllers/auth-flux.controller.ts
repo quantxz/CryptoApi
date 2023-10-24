@@ -21,7 +21,9 @@ class authFluxController {
                 const apiPrivateKey: Exclude<any, null | undefined> = req.query.ApiPrivateKeyLogin
 
                 const user = await findOneUser(privateKey)
-                next()
+                if (user) {
+                     next()
+                }
     
                 return user
     
@@ -35,7 +37,7 @@ class authFluxController {
             const { Password } = req.body;
             const data = {
                 privateKey: apiPrivateKey,
-                fullName: userName
+                Password: Password
             } as userDto
 
             const user = await findOneUser(data)
