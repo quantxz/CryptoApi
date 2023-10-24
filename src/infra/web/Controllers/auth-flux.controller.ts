@@ -20,12 +20,10 @@ class authFluxController {
             try {
                 const apiPrivateKey: Exclude<any, null | undefined> = req.query.ApiPrivateKeyLogin
 
-                const user = await findOneUser(privateKey)
+                const user = await findOneUser(apiPrivateKey)
                 if (user) {
-                     next()
+                    res.render('PrivateLoginAuth')
                 }
-    
-                return user
     
             } catch(error) { new Error }
         }
@@ -34,14 +32,18 @@ class authFluxController {
     public async privateLogin(req: Request, res: Response, next: nextFunction): Promise<any> {
         try {
             const apiPrivateKey: Exclude<any, null | undefined> = req.query.ApiPrivateKeyLogin
-            const { Password } = req.body;
+            const { email, password } = req.body;
+
             const data = {
                 privateKey: apiPrivateKey,
-                Password: Password
+                email: email,
+                password: password
             } as userDto
 
             const user = await findOneUser(data)
-            next()
+            if(user) {
+                next();
+            }
 
             return user
 

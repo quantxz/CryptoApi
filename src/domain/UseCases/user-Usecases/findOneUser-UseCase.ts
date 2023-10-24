@@ -4,7 +4,7 @@ import UserRepo from "../../Repositories/Prisma-users-repositorie"
 const findOneUser = async (data: userDto) => {
     try {
         const userRepo = new UserRepo
-        const user = await userRepo.findOne(data?.id, data?.email, data?.privateKey)
+        const user = await userRepo.findOne(data?.id, data?.email, data?.privateKey, data?.password)
     
         return user
     } catch(error) { console.debug(error) }

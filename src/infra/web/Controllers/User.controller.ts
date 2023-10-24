@@ -21,7 +21,7 @@ class UsersController {
             id: publicKey,
             fullName: fullName,
             email: email,
-            password: password,
+            password: password, 
             privateKey: privateKey
         }
 

@@ -1,4 +1,4 @@
-import { PrismaClient, Users } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { UserRepositorie } from "../Entities/User/Repositorie";
 
 class UserRepo implements UserRepositorie {
@@ -64,6 +64,25 @@ class UserRepo implements UserRepositorie {
                 where: {
                     id,
                     email
+                }
+            });
+
+            return user;
+        } else if (privateKey && email) {
+            const user = await this.prisma.users.findUnique({
+                where: {
+                    privateKey,
+                    email
+                }
+            });
+
+            return user;
+        }else if (privateKey && email && password) {
+            const user = await this.prisma.users.findUnique({
+                where: {
+                    privateKey,
+                    email,
+                    password
                 }
             });
 
