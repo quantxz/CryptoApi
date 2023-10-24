@@ -34,7 +34,7 @@ class UserRepo implements UserRepositorie {
         }
     };
 
-    public async findOne(id?: string, privateKey?: string, email?: string) {
+    public async findOne(id?: string, privateKey?: string, email?: string, password?: string) {
         if(id) {
             const user = await this.prisma.users.findUnique({
                 where: {
@@ -44,6 +44,14 @@ class UserRepo implements UserRepositorie {
 
             return user
         } else if (privateKey) {
+            const user = await this.prisma.users.findUnique({
+                where: {
+                    privateKey
+                }
+            });
+
+            return user;
+        } else if (privateKey && password) {
             const user = await this.prisma.users.findUnique({
                 where: {
                     privateKey
