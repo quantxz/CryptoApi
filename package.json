@@ -6,7 +6,8 @@
   "author": "quantxz <indiedev.core@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev ./src/interface/server.ts"
+    "dev": "ts-node-dev ./src/interface/server.ts",
+    "deva": "ts-node-dev C:/Users/ANDERSONLIMADASILVA/Desktop/CryptoApi/src/domain/Entities/nodemailer/email-repositorie.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.4.2",

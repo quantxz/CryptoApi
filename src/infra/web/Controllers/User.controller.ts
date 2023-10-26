@@ -7,6 +7,7 @@ import { nodemailerInstance } from "../../../domain/Entities/nodemailer/nodemail
 import { privateKeyGenerator } from "../../generators/privateKey-generator";
 import { renderHtml } from "../../../domain/UseCases/messageRender-UseCase";
 import { dataFormatada } from "../../../domain/Entities/data/date";
+const { Worker } = require('worker_threads');
 
 const emailSenderService = new EmailRepo(nodemailerInstance)
 
@@ -34,7 +35,19 @@ class UsersController {
         let firstName = fullName.split(" ")
         const htmlBody = renderHtml(firstName, publicKey, privateKey)
         
-        await emailSenderService.sendEmail(email, keys, htmlBody)
+        
+        const worker = new Worker('./src/infra/web/controllers/workers/worker.ts')
+        
+        worker.postMessage({
+            userEmail: email,
+            htmlBody
+        });
+
+        worker.on('message', ({ status }: any) => {
+            console.log(`Trabalhador diz: ${status}`);
+        });
+        
+        
         
         return res.status(200).send({
         message: `Ola ${firstName[0]}, um email com sua chave publica e sua chave privada de acesso á API, foi enviado para o seu email,acesse o link abaixo para entender como se usa e quando se deve usar chaves <link vai vir aqui>`,
@@ -106,6 +119,11 @@ class UsersController {
             })
          }
     }    
+
+
+    async run(fn: () => any) {
+        fn()
+    }
 }
 
 export default UsersController

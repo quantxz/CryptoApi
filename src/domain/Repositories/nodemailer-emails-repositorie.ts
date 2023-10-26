@@ -13,7 +13,7 @@ export class EmailRepo implements emailRepositorie {
         this.email = emailService
     }
 
-    async sendEmail(userEmail: string, {...keys}, htmlBody: any): Promise<Exclude<any, ExcludeTypes>>{
+    async sendEmail(userEmail: string, htmlBody: any): Promise<Exclude<any, ExcludeTypes>>{
         
         try {
             await this.email.sendMail({
