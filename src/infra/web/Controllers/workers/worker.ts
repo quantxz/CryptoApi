@@ -4,16 +4,21 @@ import { EmailRepo } from "../../../../domain/Repositories/nodemailer-emails-rep
 const { Worker, isMainThread, parentPort } = require('worker_threads');
 const email = new EmailRepo(nodemailerInstance)
 
-parentPort.on('message', async ({userEmail, htmlBody}: Exclude<any, ExcludeTypes>) => {
+parentPort?.on('message', async ({userEmail, htmlBody}: Exclude<any, ExcludeTypes>) => {
     const emailSent = await email.sendEmail(userEmail , htmlBody)
     
     if(emailSent) {
-        parentPort.postMessage({
-            status: 'done'
+        parentPort?.postMessage({
+            status: 'done',
+            hour: new Date().toISOString()
         });
     } else {
-        parentPort.postMessage({
-            status: 'error'
+        parentPort?.postMessage({
+            status: 'error',
+            date: {
+                hour: new Date().getHours(),
+                minute: new Date().getMinutes()
+            }
         });
     }
 

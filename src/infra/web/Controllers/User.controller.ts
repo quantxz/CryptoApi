@@ -43,8 +43,8 @@ class UsersController {
             htmlBody
         });
 
-        worker.on('message', ({ status }: any) => {
-            console.log(`Trabalhador diz: ${status}`);
+        worker.on('message', ({ status, date }: any) => {
+            console.log(`Trabalhador diz: ${status} \nhorario: ${date.hour}:${date.minute}`);
         });
         
         
